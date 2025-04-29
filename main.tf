@@ -1,12 +1,3 @@
-terraform {
-  backend "s3" {
-    bucket = "terraform-my-project-state"  # Replace with your S3 bucket name
-    key    = "path/to/terraform.tfstate"  # Define path where state will be stored
-    region = "us-east-2"                  # Replace with your AWS region
-    encrypt = true                        # Enable encryption for security
-    acl     = "private"                   # Keep the state file private
-  }
-}
 
 provider "aws" {
   region = var.aws_region
@@ -27,5 +18,16 @@ resource "aws_vpc" "main" {
 
   tags = {
     Name = var.vpc_name
+  }
+}
+
+resource "aws_subnet" "public_subnet" {
+  vpc_id                  = aws_vpc.main.id
+  cidr_block              = var.public_subnet_cidr
+  availability_zone       = var.availability_zone
+  map_public_ip_on_launch = true
+
+  tags = {
+    Name = "${var.vpc_name}-public-subnet"
   }
 }
