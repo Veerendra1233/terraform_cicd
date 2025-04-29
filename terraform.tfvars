@@ -6,4 +6,4 @@ instance_name = "MyFirstEC2Instance"
 vpc_id        = "vpc-09e06a02ef501e04d"
 vpc_name = "my-vpc"
 public_subnet_cidr = "10.0.1.0/24"
-availability_zone  = "us-east-1a" # or a zone in your region
+availability_zone  = "us-east-2a" # or a zone in your region
