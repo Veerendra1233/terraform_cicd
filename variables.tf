@@ -27,3 +27,13 @@ variable "vpc_id" {
   description = "VPC ID where EC2 and Security Group will be created"
   type        = string
 }
+
+variable "vpc_cidr_block" {
+  description = "CIDR block for the VPC"
+  type        = string
+}
+
+variable "vpc_name" {
+  description = "Name tag for the VPC"
+  type        = string
+}
